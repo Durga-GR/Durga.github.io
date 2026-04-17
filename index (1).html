@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Durga | CS Student Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #6C63FF;
+      --primary-light: #EEF0FF;
+      --secondary: #0F172A;
+      --muted: #64748B;
+      --bg: #F8FAFC;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --accent: #06B6D4;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--secondary);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px;
+      margin: 5rem auto 4rem;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover { background: #5A52D5; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary-light); }
+
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      flex-shrink: 0;
+      box-shadow: 0 20px 60px rgba(108,99,255,0.25);
+    }
+
+    /* SECTION */
+    section {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(108,99,255,0.1);
+    }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 6px; }
+    .skill-name { font-size: 0.82rem; font-weight: 600; color: var(--secondary); }
+    .skill-level {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: all 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 30px rgba(108,99,255,0.1);
+      transform: translateY(-2px);
+    }
+    .project-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .project-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+    .project-tech { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tech-pill {
+      background: #F1F5F9;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    /* EDUCATION */
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .edu-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .edu-info h3 { font-size: 1rem; font-weight: 700; }
+    .edu-info p { font-size: 0.87rem; color: var(--muted); margin-top: 3px; }
+    .edu-year {
+      margin-left: auto;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--secondary);
+      transition: all 0.2s;
+    }
+    .contact-card:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+    .contact-card-icon { font-size: 1.3rem; }
+    .contact-label { font-size: 0.78rem; color: var(--muted); }
+    .contact-value { font-size: 0.88rem; font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { margin: 0 auto 1.5rem; }
+      .hero-btns { justify-content: center; }
+      .hero-avatar { width: 130px; height: 130px; font-size: 2.5rem; }
+      .edu-card { flex-wrap: wrap; }
+      .edu-year { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">&lt;Alex /&gt;</div>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">👋 Open to Internships</div>
+      <h1>Hi, I'm <span> Durga </span></h1>
+      <p>2nd Year Computer Science student passionate about building cool things with code. I love DSA, web development, and exploring AI/ML.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Projects</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-avatar">👨‍💻</div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Intermediate</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">☕</div>
+        <div class="skill-name">Java</div>
+        <div class="skill-level">Intermediate</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">HTML/CSS</div>
+        <div class="skill-level">Proficient</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-level">Learning</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-level">Beginner</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐙</div>
+        <div class="skill-name">Git & GitHub</div>
+        <div class="skill-level">Intermediate</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔢</div>
+        <div class="skill-name">DSA</div>
+        <div class="skill-level">Intermediate</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐧</div>
+        <div class="skill-name">Linux</div>
+        <div class="skill-level">Beginner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">Web Dev</span>
+        <h3>Student To-Do App</h3>
+        <p>A task management web app for students to track assignments, deadlines, and study goals with local storage support.</p>
+        <div class="project-tech">
+          <span class="tech-pill">HTML</span>
+          <span class="tech-pill">CSS</span>
+          <span class="tech-pill">JavaScript</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Python</span>
+        <h3>Library Management System</h3>
+        <p>A CLI-based system to manage book records, issue/return books, and track student borrowings using file handling.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">File I/O</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">DSA</span>
+        <h3>Sorting Visualizer</h3>
+        <p>An interactive visualizer that animates Bubble, Selection, and Insertion sort algorithms step by step.</p>
+        <div class="project-tech">
+          <span class="tech-pill">HTML</span>
+          <span class="tech-pill">CSS</span>
+          <span class="tech-pill">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-info">
+        <h3> BSC.Computer Science </h3>
+        <p>Currently in 2nd Year · CGPA: 8.5 / 10</p>
+        <p style="margin-top: 4px; font-size: 0.8rem;">Relevant: Data Structures, OOP, DBMS, OS, Computer Networks</p>
+      </div>
+      <div class="edu-year">2023 – 2027</div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <a href="mailto:alex.kumar@email.com" class="contact-card">
+        <span class="contact-card-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">durga1234@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://github.com/alexkumar" class="contact-card">
+        <span class="contact-card-icon">🐙</span>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">github.com/Durga</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/Durga" class="contact-card">
+        <span class="contact-card-icon">💼</span>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">linkedin.com/in/Durga</div>
+        </div>
+      </a>
+      <a href="#" class="contact-card">
+        <span class="contact-card-icon">📍</span>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Chennai, India</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with ❤️ by Durga · Hosted on GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
