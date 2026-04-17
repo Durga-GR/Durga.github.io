@@ -29,9 +29,7 @@ This is my personal portfolio website created using HTML. It showcases my profil
 ### Projects Section
 ![Projects](screenshots/project.png)
 
-### Education & Contact
-![Education and Contact](screenshots/education and contact.png)
-
+S
 ## 📁 Project Structure
 
 yourusername.github.io/
