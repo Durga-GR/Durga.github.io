@@ -24,14 +24,13 @@ This is my personal portfolio website created using HTML. It showcases my profil
 ## 📸 Screenshots
 
 ### Home Page
-
 ![Home](screenshots/home.png)
 
 ### Projects Section
+![Projects](screenshots/project.png)
 
-screenshots/Screenshot 2026-04-17 190924.png
-
-screenshots/Screenshot 2026-04-17 190936.png
+### Education & Contact
+![Education](screenshots/education and contact.png)
 
 ## 📁 Project Structure
 
