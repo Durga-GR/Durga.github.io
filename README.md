@@ -30,7 +30,7 @@ This is my personal portfolio website created using HTML. It showcases my profil
 ![Projects](screenshots/project.png)
 
 ### Education & Contact
-![Education](screenshots/education and contact.png)
+![Education and Contact](screenshots/education and contact.png)
 
 ## 📁 Project Structure
 
