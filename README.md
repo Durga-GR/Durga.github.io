@@ -29,7 +29,9 @@ This is my personal portfolio website created using HTML. It showcases my profil
 
 ### Projects Section
 
-![Projects](screenshots/projects.png)
+![Projects]screenshots/Screenshot 2026-04-17 190924.png
+
+screenshots/Screenshot 2026-04-17 190936.png
 
 ## 📁 Project Structure
 
